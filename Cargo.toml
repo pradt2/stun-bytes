@@ -1,0 +1,15 @@
+[package]
+name = "stun-bytes"
+version = "1.0.0"
+authors = ["pradt2"]
+edition = "2021"
+readme = "README.md"
+repository = "https://github.com/pradt2/stun-bytes"
+license = "MIT"
+
+[features]
+cookie = []
+default = []
+
+[dependencies]
+r-ex = { version = "1.0.0", features = ["endian", "carve", "copy-from", "from-arr", "splice"] }
