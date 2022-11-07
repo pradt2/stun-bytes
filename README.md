@@ -2,6 +2,11 @@
 
 A low-level base for STUN message protocol parsers.
 
+## Highlights
+  - Zero-copy
+  - No-std
+  - RFC-agnostic
+
 ## STUN Message structure
 
 ### Header
@@ -90,15 +95,6 @@ msg.add_attr(MSG.carve(20)?, MSG.carve(22)?, MSG.get(24..28)?); // write attribu
 
 assert_eq!(&MSG, msg.as_bytes());
 ```
-
-## Principles
- - Zero-copy
-
-
- - No-std
-
-
- - RFC-agnostic
 
 ## Contribution guidelines
 
