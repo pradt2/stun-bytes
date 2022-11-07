@@ -1,5 +1,10 @@
 # stun-bytes
 
+![Github](https://img.shields.io/badge/github-pradt2/stun_bytes-8da0cb?style=flat-square&labelColor=555555&logo=github")
+![Crates.io](https://img.shields.io/crates/v/stun-bytes.svg?style=flat-square&color=fc8d62&logo=rust)
+![Codacy grade](https://img.shields.io/codacy/grade/ac4ccb5cf89a431b9ec758c28082acf0?style=flat-square)
+![Crates.io](https://img.shields.io/crates/l/stun-bytes?style=flat-square)
+
 A low-level base for STUN message protocol parsers.
 
 ## Highlights
