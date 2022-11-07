@@ -3,9 +3,9 @@
 A low-level base for STUN message protocol parsers.
 
 ## Highlights
-  - Zero-copy
-  - No-std
-  - RFC-agnostic
+ - Zero-copy
+ - No-std
+ - RFC-agnostic
 
 ## STUN Message structure
 
