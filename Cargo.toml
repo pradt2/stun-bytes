@@ -1,6 +1,6 @@
 [package]
 name = "stun-bytes"
-version = "1.0.0"
+version = "1.0.1"
 authors = ["pradt2"]
 edition = "2021"
 readme = "README.md"
@@ -16,4 +16,4 @@ cookie = []
 default = []
 
 [dependencies]
-r-ex = { version = "1.0.0", features = ["endian", "carve", "copy-from", "from-arr", "splice"] }
+r-ex = { version = "1.0.1", features = ["endian", "carve", "copy-from", "from-arr", "splice"] }
