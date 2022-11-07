@@ -51,17 +51,17 @@ const MSG: [u8; 28] = [
 
 let msg = ByteMsg::from_arr(&MSG);
 
-assert_eq!(&MSG[0..2], msg.typ().unwrap());     // read type field
-assert_eq!(&MSG[2..4], msg.len().unwrap());     // read length field
-assert_eq!(&MSG[4..8], msg.cookie().unwrap());  // read cookie field (enable 'cookie' feature first)
-assert_eq!(&MSG[8..20], msg.tid().unwrap());    // read transaction id field
-assert_eq!(&MSG[20..28], msg.attrs().unwrap()); // read all attribute bytes
+assert_eq!(&MSG[0..2], msg.typ()?);     // read type field
+assert_eq!(&MSG[2..4], msg.len()?);     // read length field
+assert_eq!(&MSG[4..8], msg.cookie()?);  // read cookie field (enable 'cookie' feature first)
+assert_eq!(&MSG[8..20], msg.tid()?);    // read transaction id field
+assert_eq!(&MSG[20..28], msg.attrs()?); // read all attribute bytes
 
-let attr = msg.attrs_iter().next().unwrap();    // iterate over attributes
+let attr = msg.attrs_iter().next()?;    // iterate over attributes
 
-assert_eq!(&MSG[20..22], attr.typ().unwrap());  // read attribute type field
-assert_eq!(&MSG[22..24], attr.len().unwrap());  // read attribute length field
-assert_eq!(&MSG[24..28], attr.val().unwrap());  // read attribute value field
+assert_eq!(&MSG[20..22], attr.typ()?);  // read attribute type field
+assert_eq!(&MSG[22..24], attr.len()?);  // read attribute length field
+assert_eq!(&MSG[24..28], attr.val()?);  // read attribute value field
 ```
 
 ### Create STUN message
@@ -82,11 +82,11 @@ const MSG: [u8; 28] = [
 let mut buf = [0u8; MSG.len()];
 let mut msg = ByteMsgMut::from_arr_mut(&mut buf);
 
-msg.typ().unwrap().copy_from(MSG.carved().unwrap());                                    // write type field
-// msg.len().unwrap().copy_from(MSG.carve(2).unwrap());                                 // length field updates automatically
-msg.cookie().unwrap().copy_from(MSG.carve(4).unwrap());                                 // write cookie field
-msg.tid().unwrap().copy_from(MSG.carve(8).unwrap());                                    // write transaction id field
-msg.add_attr(MSG.carve(20).unwrap(), MSG.carve(22).unwrap(), MSG.get(24..28).unwrap()); // write attribute (type, length, value)
+msg.typ()?.copy_from(MSG.carved()?);                            // write type field
+// msg.len()?.copy_from(MSG.carve(2)?);                         // length field updates automatically
+msg.cookie()?.copy_from(MSG.carve(4)?);                         // write cookie field
+msg.tid()?.copy_from(MSG.carve(8)?);                            // write transaction id field
+msg.add_attr(MSG.carve(20)?, MSG.carve(22)?, MSG.get(24..28)?); // write attribute (type, length, value)
 
 assert_eq!(&MSG, msg.as_bytes());
 ```
